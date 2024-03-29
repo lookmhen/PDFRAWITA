@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Concert+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Concert One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  font-family: "Arial", sans-serif;
+  /*background-color: #fffff4;*/
+  color: #000000;
+  /* เปลี่ยนชื่อไฟล์รูปภาพตามที่คุณมี */
+  background-size: cover;
+  /* เพื่อให้รูปภาพทำการ cover พื้นที่ของ body */
+  background-repeat: no-repeat;
+  /* ปิดการทำซ้ำรูปภาพ */
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  /*แกนY*/
+  /* justify-content: space-between;* จัดแนวแกน/
+	align-items: center;  /*แกนX*/
+}
+
+#split-form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 450px;
+  height: 260px;
+  background-color: #c6e2ff;
+  border-radius: 80px 80px / 80px 80px;
+  border: 5px dashed #1e90ff;
+  margin-top: 5rem;
+  margin-bottom: 6rem;
+}
+
+/* องประกอบส่วนหู */
+#split-form::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 20px;
+  left: 20px;
+  margin: 0;
+  border-radius: 50%;
+  border-left: 50px solid #bababa;
+  border-right: 50px solid #bababa;
+  border-bottom: 86.6px solid #bababa;
+  filter: blur(1px) drop-shadow(320px 0 0 #adb3ac) drop-shadow(6px 0 0 #20201f);
+  z-index: -1;
+}
+
+/* องประกอบส่วนแก้ม */
+#split-form::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 180px;
+  left: -20px;
+  border-radius: 60% 60%;
+  border-left: 30px solid #e6b8e3;
+  border-right: 30px solid #e6b8e3;
+  border-top: 1px solid transparent;
+  border-bottom: 86.6px solid #e6b8e3;
+  filter: blur(10px) drop-shadow(420px 0 0 #e6b8e3) drop-shadow(6px 0 0 #e6b8e3);
+  transform: rotateX(60deg);
+  z-index: 2;
+}
+
+#rotate-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 450px;
+  height: 260px;
+  background-color: rgb(214, 207, 255);
+  border-radius: 80px 80px / 80px;
+  border: 5px dashed #ab82ff;
+}
+
+
+/* องประกอบส่วนหู */
+#rotate-form::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 380px;
+  left: 20px;
+  border-radius: 50%;
+  border-left: 50px solid #bababa;
+  border-right: 50px solid #bababa;
+  border-bottom: 86.6px solid #bababa;
+  filter: blur(1px) drop-shadow(320px 0 0 #adb3ac) drop-shadow(6px 0 0 #20201f);
+  z-index: -1;
+}
+
+/* องประกอบส่วนแก้ม */
+#rotate-form::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 550px;
+  left: -20px;
+  border-radius: 60% 60%;
+  border-left: 30px solid #e6b8e3;
+  border-right: 30px solid #e6b8e3;
+  border-top: 1px solid transparent;
+  border-bottom: 86.6px solid #e6b8e3;
+  filter: blur(10px) drop-shadow(420px 0 0 #e6b8e3) drop-shadow(6px 0 0 #e6b8e3);
+  transform: rotateX(60deg);
+  z-index: 2;
+}
+
+button {
+  position: absolute;
+  margin: 1rem;
+  display: block;
+  width: 150px;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 0.5rem;
+  left: 140px;
+  transition: 0.2s;
+}
+
+label {
+  margin-right: 5px;
+}
+
+#splitsummit:hover {
+  background-color: #1e90ff;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#rotatesummit:hover {
+  background-color: #ab82ff;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+input {
+  display: inline-block;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 3px;
+}
+input[type="file"] {
+  display: none;
+}
+
+input::placeholder {
+  text-align: center;
+}
+
+input:focus::placeholder {
+  text-align: center;
+}
+
+h1 {
+  background-color: rgb(0, 0, 0);
+  border-radius: 10px 10px / 10px;
+  width: 50%;
+  color: rgb(255, 255, 255);
+  /* สีฟร้อน */
+}
+
+h2 {
+  margin-top: -2rem;
+  text-align: center;
+  border-radius: 10px 10px / 10px;
+}

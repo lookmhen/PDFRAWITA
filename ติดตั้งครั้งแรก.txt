@@ -1,0 +1,6 @@
+install python
+install vscode
+
+cmd pip install pypdf2
+cmd pip install flask
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PDF Manipulator</title>
+</head>
+<link rel="stylesheet" type"text/css" href="{{url_for('static',filename='css/style.css')}}">
+
+<body>
+		<div class="container">
+			<div id="split-form" class="drop-area">
+				<form action="/split" class="form" method="post" enctype="multipart/form-data">
+					<h2>- SPLIT -</h2>
+					<span id="split-filename"></span>
+					<label for="file">Choose & Drop area</label>
+					<input type="file" name="file" accept=".pdf" required >
+					<br>
+					<br><label for="start_page">หน้าเริ่มต้น:</label>
+					<input type="number" name="start_page" placeholder="1" required><br>
+					<br>
+					<label for="end_page">หน้าสิ้นสุด:</label>
+					<input type="number" name="end_page" placeholder="2" required>
+					<button class="btn-form" id="splitsummit" type="submit"> Let GO!! </button>
+				</form>
+			</div>
+
+			<div id="rotate-form" class="drop-area">
+				<form action="/rotate" class="form" method="post" enctype="multipart/form-data">
+					<h2>- ROTATE -</h2>
+					<span id="rotate-filename"></span>
+					<label for="file">Choose & Drop area</label>
+					<input type="file" name="file" accept=".pdf" required>
+					<br>
+					<label for="page_number"><br>หน้าที่ : </label>
+					<input type="text" name="page_number" placeholder="1,2,3" required>
+					<br>
+					<label for="degree"><br>องศา:</label>
+					<input type="text" name="degree" placeholder="90,-90,90" required>
+					<button type="submit" id="rotatesummit"> Let GO!! </button>
+				</form>
+			</div>
+		</div>
+
+</body>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</html>

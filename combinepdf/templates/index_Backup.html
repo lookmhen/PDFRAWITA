@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Merger</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-input {
+            margin-bottom: 10px;
+        }
+
+        .drop-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .file-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #008CBA;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #007A9E;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+        }
+
+        li::before {
+            content: "\2022";
+            color: #4CAF50;
+            margin-right: 10px;
+        }
+
+        .remove-btn {
+            margin-left: auto;
+            background-color: #ff5252;
+        }
+
+        .remove-btn:hover {
+            background-color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>PDF Merger</h1>
+    <form method="POST" action="/merge" enctype="multipart/form-data" id="mergeForm">
+        <div id="fileListContainer" class="file-input-container">
+            <div class="file-input">
+                <div class="drop-area" id="dropArea">
+                    <p>Drag and drop files here</p>
+                    <p>or</p>
+                    <input type="file" id="fileInput" name="files[]" multiple>
+                    <p>(Hold Ctrl or Shift to select multiple files)</p>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <button type="button" onclick="addFilesToList()">Add Files</button>
+        <input type="submit" value="Merge PDFs">
+    </form>
+
+    <h2>Selected Files:</h2>
+    <ul id="fileList" class="file-list"></ul>
+
+    <script>
+        let fileCount = 1;
+
+        function addFilesToList() {
+            const fileInputContainer = document.createElement('div');
+            fileInputContainer.classList.add('file-input');
+
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.name = 'files[]';
+            fileInput.multiple = true;
+
+            const removeButton = document.createElement('button');
+            removeButton.classList.add('remove-btn');
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', () => {
+                fileInputContainer.remove();
+                updateFileList();
+            });
+
+            fileInputContainer.appendChild(fileInput);
+            fileInputContainer.appendChild(removeButton);
+
+            const fileListContainer = document.getElementById('fileListContainer');
+            fileListContainer.appendChild(fileInputContainer);
+
+            // Update the file list display
+            updateFileList();
+        }
+
+        document.getElementById('mergeForm').addEventListener('change', updateFileList);
+
+        function updateFileList() {
+        const fileList = document.getElementById('fileList');
+        const fileInputContainers = document.querySelectorAll('.file-input');
+
+        fileList.innerHTML = ''; // Clear the list
+
+        let fileIndex = 1;
+        fileInputContainers.forEach((container, containerIndex) => {
+            const fileListItems = container.querySelector('input[type="file"][name="files[]"]').files;
+            for (let j = 0; j < fileListItems.length; j++) {
+                const listItem = document.createElement('li');
+                listItem.textContent = 'File ' + fileIndex + ': ' + fileListItems[j].name;
+                fileList.appendChild(listItem);
+                fileIndex++;
+            }
+        });
+        }
+
+
+        // Handle drag and drop events
+        const dropArea = document.getElementById('dropArea');
+
+        dropArea.addEventListener('dragenter', (e) => {
+            e.preventDefault();
+            dropArea.style.backgroundColor = '#f9f9f9';
+        });
+
+        dropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        dropArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropArea.style.backgroundColor = 'transparent';
+        });
+
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropArea.style.backgroundColor = 'transparent';
+
+            const fileList = e.dataTransfer.files;
+            for (let i = 0; i < fileList.length; i++) {
+                const fileInputContainer = document.createElement('div');
+                fileInputContainer.classList.add('file-input');
+
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.name = 'files[]';
+                fileInput.multiple = true;
+                fileInput.files = fileList;
+
+                const removeButton = document.createElement('button');
+                removeButton.classList.add('remove-btn');
+                removeButton.textContent = 'Remove';
+                removeButton.addEventListener('click', () => {
+                    fileInputContainer.remove();
+                    updateFileList();
+                });
+
+                fileInputContainer.appendChild(fileInput);
+                fileInputContainer.appendChild(removeButton);
+
+                const fileListContainer = document.getElementById('fileListContainer');
+                fileListContainer.appendChild(fileInputContainer);
+            }
+
+            // Update the file list display
+            updateFileList();
+        });
+    </script>
+</body>
+</html>

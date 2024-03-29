@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #title{
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+        }
+        
+        h1{
+            margin: 2rem;
+            margin-bottom:1rem ;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .container{
+            border: dashed 2px tomato;
+        }
+
+        .detail{
+            margin: 2rem;
+            width: 1000px;
+        }
+
+        li{
+            font-size: 1.5rem;
+            margin: 1rem;
+        }
+
+        b{
+            font-size: 1.5rem;
+            margin: 5px;
+            color: red;
+        }
+        .remark{
+            font-size: 1.5rem;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">รายละเอียดสิ่งที่ต้องลงเพื่อใช้งาน PDF APP</h1>
+    <div class="container">
+        <div class="detail">
+            <h1>รายละเอียดสิ่งที่ต้องลงเพื่อ Python</h1>
+        <ul>
+            <li>ตัวภาษา Python (ปัจจบันเวอชั่น 3.12) Download ได้จาก >>><a href="https://www.python.org/">ลิ้งนี้เลย</a></li>
+            <li>Vscode (Editor สำหรับไว้อ่านcodeและแก้ไข) <b >ไม่บังคับติดตั้ง</b>Download ได้จาก >>><a href="https://code.visualstudio.com/">ลิ้งนี้เลย</a></li>
+        </ul>
+        </div>
+        <hr>
+        <div class="detail">
+            <h1>รายชื่อ library ที่ต้องติดตั้งสำหรับโปรเจ็คนี้</h1>
+        <ul>
+            <p></p>
+            <li>Flask (สำหรับรัน webapp) คำสั่งติดตั้ง  <b>pip install flask</b> </li>
+            <li>pypdf2 (สำหรับ จัดการไฟล์ PDF เบื้อหลังที่เราใช้เช่น หมุน,ตัด,รวม) <b>pip install pypdf2</b></li>
+            <li>waitress (สำหรับ ทำWSGI ถ้าไม่ใช้เครื่องอื่นจะเข้ามาใช้ไม่ได้ใช้ได้คนเดียว) <b>pip install waitress</b></li>
+            <p class="remark">*** วิธีการติดตั้ง library ใช้ cmd (command prompt) พิมที่ช่องค้นหาได้เลย จากนั้นก็อบปี้คำสั่งด้านบนมาใส่ติดตั้งได้เลย </p>
+            <br>
+            <p >*** อีกวิธีคือ ติดตั้งด้วย file requirement.txt จะทำให้ library ที่ติดตั้งได้ตรงเวอชั่นเดิมที่เราต้องการ คำสั่งคือ pip install -r requirement.txt  ***</p>
+        </div>
+    </div>
+</body>
+</html>
