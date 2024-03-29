@@ -170,7 +170,9 @@ input {
 input[type="file"] {
   display: none;
 }
-
+input[type="number"], input[type="text"] {
+  text-align: center;
+}
 input::placeholder {
   text-align: center;
 }

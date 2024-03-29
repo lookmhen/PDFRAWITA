@@ -1,0 +1,139 @@
+       *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+       }
+       
+       
+       body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #drop-area {
+            display:flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed #ffc0cb;
+            border-radius: 20px;
+            width: 800px;
+            height: 500px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(255, 192, 203, 0.3);
+            cursor: pointer;
+        }
+
+        #file-list {
+            margin-top: 20px;
+        }
+
+        .file-entry {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(255, 192, 203, 0.3);
+            cursor: move;
+            border-left: 2px solid #ffc0cb;
+        }
+
+        .file-name {
+            flex-grow: 1;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .remove-file {
+            padding: 4px 10px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .remove-file:hover {
+            background-color: #cc0000;
+        }
+
+        #move-description {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        #merge-form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #merge-form input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ffc0cb;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        #merge-form input[type="submit"]:hover {
+            background-color: #ff90a6;
+        }
+		
+		
+		.file-number {
+			  position: relative;
+			  display: inline-block;
+			}
+
+			.star {
+			  position: relative;
+			  display: inline-block;
+			  width: 24px;
+			  height: 24px;
+			  background-color: #ff90a6;
+			  color: #ffffff;
+			  font-size: 12px;
+			  text-align: center;
+			  line-height: 24px;
+			  transform: rotate(45deg);
+			}
+			
+		.file-entry {
+			  display: flex;
+			  align-items: center;
+			  justify-content: flex-start;
+			  margin-bottom: 10px;
+			  cursor: move;
+			}
+
+			.star {
+			  margin-right: 10px; /* Adjust the spacing between the star and file name */
+			}
+
+        /* หน้าแมว */
+		.symbol {
+        margin-top: 2rem;
+		  font-size: 300px;
+		  line-height: 1;
+		}
+		
+		.mergesymbol {
+		  font-size: px;
+		  line-height:1;
+        }

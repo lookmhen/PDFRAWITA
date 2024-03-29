@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, send_file, session
 from PyPDF2 import PdfMerger
+from waitress import serve
 import os
 import uuid
+import socket
 import secrets
 import time
 import logging
@@ -51,7 +53,7 @@ def cleanup_temp_files():
 
 
 
-@app.route('/')
+@app.route('/pdfmerge')
 def home():
     return render_template('index.html')
 
@@ -106,6 +108,20 @@ def merge():
 def run_cleanup():
     ensure_temp_directory_exists()
     cleanup_temp_files()
+    
+    
+def start_server():
+    """
+    Start the Waitress server.
+    """
+    host = socket.gethostbyname(socket.gethostname())
+    port = int(os.environ.get('PORT', 80))
+
+    ensure_temp_directory_exists()
+
+    logger.info("Starting the Mergepdf server on %s:%d%s", "http://"+host, port, '/pdfmerge')
+
+    serve(app, host=host, port=port)
 
 if __name__ == '__main__':
-    app.run(port=80, debug=True)
+    start_server()

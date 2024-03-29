@@ -1,21 +1,13 @@
 from flask import Flask, render_template, request, send_file
 from werkzeug.utils import secure_filename
 from PyPDF2 import PdfWriter, PdfReader
-from waitress import serve
-from pathlib import Path
 import os
-import logging
-import socket
+from pathlib import Path
 
 app = Flask(__name__)
 
 DOWNLOADS_FOLDER = str(Path.home() / "Downloads")
 ALLOWED_EXTENSIONS = {'pdf'}
-
-
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 app.config['DOWNLOADS_FOLDER'] = DOWNLOADS_FOLDER
 
@@ -74,7 +66,7 @@ def rotate_pages(pdf_file, page_numbers_input, degrees_input):
     return output_path
 
 
-@app.route('/pdftools')
+@app.route('/')
 def index():
     return render_template('index.html')
 
@@ -116,17 +108,6 @@ def rotate():
         return 'Invalid file format'
 
 
-def start_server():
-    """
-    Start the Waitress server.
-    """
-    host = socket.gethostbyname(socket.gethostname())
-    port = int(os.environ.get('PORT', 80))
-
-    logger.info("Starting the Mergepdf server on %s:%d%s", "http://"+host, port, '/pdftools')
-
-    serve(app, host=host, port=port)
-
     
 if __name__ == '__main__':
-    start_server()
+    app.run(debug=True)
